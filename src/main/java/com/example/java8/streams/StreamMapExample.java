@@ -15,6 +15,14 @@ public class StreamMapExample {
         userList.add(new User(2, "John", "secret", "john@gmail.com"));
         userList.add(new User(3, "Emma", "secret", "emma@gmail.com"));
 
+        // forEach() with list
+        userList.forEach((user -> {
+            System.out.println(user.getUserName());
+            System.out.println(user.getPassword());
+            System.out.println(user.getEmail());
+        }));
+
+        // forEach() with stream
         userList.stream()
                 .map((User user) -> new UserDTO(user.getId(), user.getUserName(), user.getEmail()))
                 .forEach(System.out::println);
