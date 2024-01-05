@@ -3,8 +3,10 @@ package com.example.java8.streams;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamMapExample {
 
@@ -26,6 +28,11 @@ public class StreamMapExample {
         userList.stream()
                 .map((User user) -> new UserDTO(user.getId(), user.getUserName(), user.getEmail()))
                 .forEach(System.out::println);
+
+        // get usernames to a list
+        List<String> nameList = userList.stream().map(User::getUserName).toList();
+        System.out.println(nameList);
+
     }
 
 }
