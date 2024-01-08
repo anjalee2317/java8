@@ -1,19 +1,22 @@
 package com.example.java8.designPattern;
 
 public class Singleton {
-    private static Singleton instance;
+    // ensure visibility in multi-threaded environment
+    private static volatile Singleton instance;
 
+    // private constructor to prevent instantiation from outside
     private Singleton() {
     }
 
+    // public method to get Singleton instance
     public static Singleton getInstance() {
 
+        // Double check locks
         if (instance == null) {
-
             synchronized (Singleton.class) {
-
                 if (instance == null) {
-
+                    // create the instance if it's null
+                    // lazy initialization to avoid unnecessary resource consumption
                     instance = new Singleton();
                 }
             }
